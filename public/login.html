@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title center-align">Login to Herbal Heaven</span>
+                            <form id="login-form">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">email</i>
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">Email</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input type="password" id="password" name="password" required>
+                                    <label for="password">Password</label>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12">
+                                        <label>
+                                            <input type="checkbox" id="remember-me" />
+                                            <span>Remember me</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 center-align">
+                                        <button class="btn waves-effect waves-light green" type="submit">
+                                            Login
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-action center-align">
+                            <p>Don't have an account? <a href="register.html" class="green-text">Register here</a></p>
+                            <a href="forgot-password.html" class="green-text">Forgot Password?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html> 

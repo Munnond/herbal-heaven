@@ -1,0 +1,169 @@
+/* Admin Dashboard Styles */
+
+/* Sidebar */
+.sidebar {
+    background-color: #f5f5f5;
+    min-height: calc(100vh - 64px);
+    padding: 0 !important;
+    border-right: 1px solid #e0e0e0;
+}
+
+.sidebar .collection {
+    border: none;
+    margin: 0;
+}
+
+.sidebar .collection-header {
+    background-color: #4CAF50;
+    padding: 20px;
+}
+
+.sidebar .collection-header h4 {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.sidebar .collection-item {
+    border: none;
+    padding: 0;
+}
+
+.sidebar .collection-item a {
+    color: #333;
+    display: block;
+    padding: 15px 20px;
+    transition: background-color 0.3s;
+}
+
+.sidebar .collection-item a:hover {
+    background-color: #e8f5e9;
+}
+
+.sidebar .collection-item.active a {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px;
+}
+
+/* Stats Cards */
+.card .card-content {
+    padding: 20px;
+}
+
+.card .card-content .card-title {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.card .card-content h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: #2e7d32;
+}
+
+/* Tables */
+table.striped tbody tr:nth-child(odd) {
+    background-color: #f5f5f5;
+}
+
+table th {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Order Status Select */
+.order-status {
+    display: inline-block;
+    width: auto;
+    height: 2rem;
+    padding: 0 5px;
+    font-size: 0.9rem;
+}
+
+/* Action Buttons */
+.btn-small {
+    padding: 0 0.5rem;
+}
+
+.btn-small i {
+    font-size: 1.2rem;
+}
+
+/* Order Items in Modal */
+.order-items {
+    margin: 20px 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+/* Low Stock Alert */
+.low-stock-alert {
+    color: #f44336;
+}
+
+/* Responsive Adjustments */
+@media only screen and (max-width: 992px) {
+    .sidebar {
+        min-height: auto;
+        border-right: none;
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 20px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+}
+
+/* Modal Customization */
+.modal {
+    max-width: 600px;
+}
+
+.modal .modal-content {
+    padding: 24px;
+}
+
+.modal .modal-footer {
+    padding: 4px 24px;
+}
+
+/* Form Fields */
+.input-field input[type=number] {
+    font-size: 1.2rem;
+    padding: 5px;
+}
+
+.input-field label {
+    color: #666;
+}
+
+/* Toast Customization */
+.toast {
+    border-radius: 4px;
+}
+
+.toast.red {
+    background-color: #f44336;
+}
+
+.toast.green {
+    background-color: #4CAF50;
+} 

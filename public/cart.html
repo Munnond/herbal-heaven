@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart - Herbal Heaven</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .quantity-selector { display: flex; align-items: center; }
+    .quantity-selector .quantity { width: 3rem; text-align: center; margin: 0 0.5rem; border: 1px solid #e0e0e0; border-radius: 4px; }
+    .promo-code .input-field { display: flex; align-items: flex-end; }
+    .btn-large.full-width { width: 100%; }
+    #empty-cart-message { margin-top: 2rem; }
+    .cart-item { padding: 1rem 0; border-bottom: 1px solid #e0e0e0; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+
+  <main class="grey lighten-5">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h4>Shopping Cart</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Cart Items -->
+        <div class="col s12 m8">
+          <div class="card">
+            <div class="card-content">
+              <div id="cart-items">
+                <!-- Items will be injected here or empty state -->
+                <div class="center-align" id="empty-cart-message" style="display: none;">
+                  <i class="material-icons large grey-text text-lighten-2">shopping_cart</i>
+                  <p class="grey-text text-darken-1 flow-text">Your cart is empty</p>
+                  <a href="/products" class="btn-large green darken-2 waves-effect waves-light">
+                    <i class="material-icons left">store</i>
+                    Continue Shopping
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="col s12 m4">
+          <div class="card">
+            <div class="card-content">
+              <span class="card-title">Order Summary</span>
+              <div class="summary-item">
+                <span>Subtotal</span>
+                <span id="subtotal">₹0.00</span>
+              </div>
+              <div class="summary-item">
+                <span>Shipping</span>
+                <span id="shipping">₹0.00</span>
+              </div>
+              <div class="summary-item">
+                <span>Tax</span>
+                <span id="tax">₹0.00</span>
+              </div>
+              <div class="divider"></div>
+              <div class="summary-item total">
+                <span>Total</span>
+                <span id="total">₹0.00</span>
+              </div>
+
+              <!-- Promo Code -->
+              <div class="promo-code" style="margin: 1rem 0;">
+                <div class="input-field">
+                  <input type="text" id="promo-code" placeholder="Enter promo code">
+                  <button class="btn-small waves-effect waves-light green" id="apply-promo">
+                    Apply
+                  </button>
+                </div>
+              </div>
+
+              <!-- Checkout Button -->
+              <button class="btn waves-effect waves-light green btn-large full-width" id="checkout-btn">
+                Proceed to Checkout
+                <i class="material-icons right">shopping_cart_checkout</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <!-- Cart Item Template -->
+  <template id="cart-item-template">
+    <div class="cart-item" data-item-id="">
+      <div class="row valign-wrapper">
+        <div class="col s3">
+          <img src="" alt="Product" class="responsive-img">
+        </div>
+        <div class="col s5">
+          <h6 class="product-name"></h6>
+          <p class="product-price"></p>
+        </div>
+        <div class="col s2">
+          <div class="quantity-selector">
+            <button class="btn-floating btn-small waves-effect waves-light red decrease-quantity">
+              <i class="material-icons">remove</i>
+            </button>
+            <input type="number" class="quantity" value="1" min="1">
+            <button class="btn-floating btn-small waves-effect waves-light green increase-quantity">
+              <i class="material-icons">add</i>
+            </button>
+          </div>
+        </div>
+        <div class="col s2">
+          <button class="btn-floating btn-small waves-effect waves-light red remove-item">
+            <i class="material-icons">delete</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/socket-notifications.js"></script>
+  <script src="/js/cart.js"></script>
+</body>
+</html>

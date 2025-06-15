@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Herbal Heaven</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="green darken-1">
+        <div class="nav-wrapper container">
+            <a href="/admin/dashboard.html" class="brand-logo">Admin Dashboard</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/admin/products.html">Manage Products</a></li>
+                <li><a href="/admin/orders.html">Orders</a></li>
+                <li><a href="/admin/users.html">Users</a></li>
+                <li><a href="/admin/send-notification.html">Send Notification</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="/admin/products.html">Manage Products</a></li>
+        <li><a href="/admin/orders.html">Orders</a></li>
+        <li><a href="/admin/users.html">Users</a></li>
+        <li><a href="/admin/send-notification.html">Send Notification</a></li>
+        <li><a href="#" id="mobile-logout">Logout</a></li>
+    </ul>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Summary Cards -->
+        <div class="row">
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Total Sales</span>
+                        <h4 id="total-sales">Rs.0.00</h4>
+                        <p id="sales-change" class="change-indicator"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Total Orders</span>
+                        <h4 id="total-orders">0</h4>
+                        <p id="orders-change" class="change-indicator"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Total Users</span>
+                        <h4 id="total-users">0</h4>
+                        <p id="users-change" class="change-indicator"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Products</span>
+                        <h4 id="total-products">0</h4>
+                        <p id="low-stock" class="change-indicator"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="row">
+            <!-- Sales Chart -->
+            <div class="col s12 m8">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Sales Overview</span>
+                        <div class="chart-container" style="position: relative; height:300px;">
+                            <canvas id="sales-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Top Products -->
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Top Products</span>
+                        <ul class="collection" id="top-products">
+                            <!-- Top products will be loaded here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="row">
+            <!-- Recent Orders -->
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Recent Orders</span>
+                        <table class="striped">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-orders">
+                                <!-- Recent orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- New Users -->
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">New Users</span>
+                        <table class="striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Joined</th>
+                                </tr>
+                            </thead>
+                            <tbody id="new-users">
+                                <!-- New users will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/admin-dashboard.js"></script>
+</body>
+</html> 

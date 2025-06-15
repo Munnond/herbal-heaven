@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications - Herbal Heaven</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>
+                    <i class="material-icons left">notifications</i>
+                    Your Notifications
+                </h4>
+                <div class="notification-header">
+                    <div class="right-align">
+                        <button id="mark-all-read-btn" class="btn green waves-effect waves-light">
+                            <i class="material-icons left">done_all</i>
+                            Mark all as read
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <!-- Notifications Container -->
+                <div id="notifications-container">
+                    <!-- Loading Spinner -->
+                    <div id="notifications-loading" class="center-align" style="padding: 40px;">
+                        <div class="preloader-wrapper big active">
+                            <div class="spinner-layer spinner-green-only">
+                                <div class="circle-clipper left">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="gap-patch">
+                                    <div class="circle"></div>
+                                </div>
+                                <div class="circle-clipper right">
+                                    <div class="circle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- No Notifications Message -->
+                    <div id="no-notifications" class="center-align" style="padding: 40px; display: none;">
+                        <i class="material-icons large green-text">notifications_none</i>
+                        <h5>No notifications yet</h5>
+                        <p class="grey-text">We'll notify you when something important happens!</p>
+                    </div>
+
+                    <!-- Notifications List -->
+                    <div id="notifications-list" style="display: none;">
+                        <!-- Notifications will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/socket-notifications.js"></script>
+    <script src="/js/notifications.js"></script>
+</body>
+</html> 

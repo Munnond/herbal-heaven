@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <!-- Article Content -->
+            <div class="row">
+                <div class="col s12 m8">
+                    <!-- Article Header -->
+                    <div class="article-header">
+                        <h4 id="article-title"></h4>
+                        <div class="article-meta">
+                            <span class="article-category green-text"></span>
+                            <span class="article-date grey-text"></span>
+                            <span class="article-author">
+                                <i class="material-icons tiny">person</i>
+                                <span class="author-name"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Article Image -->
+                    <div class="article-image">
+                        <img id="article-image" class="responsive-img" alt="Article Image">
+                    </div>
+
+                    <!-- Article Content -->
+                    <div class="article-content" id="article-content">
+                        <!-- Content will be loaded here -->
+                    </div>
+
+                    <!-- Article Tags -->
+                    <div class="article-tags" id="article-tags">
+                        <!-- Tags will be loaded here -->
+                    </div>
+
+                    <!-- Social Share -->
+                    <div class="social-share">
+                        <h5>Share this article</h5>
+                        <div class="share-buttons">
+                            <a href="#!" class="btn-floating waves-effect waves-light blue" id="share-facebook">
+                                <i class="material-icons">facebook</i>
+                            </a>
+                            <a href="#!" class="btn-floating waves-effect waves-light light-blue" id="share-twitter">
+                                <i class="material-icons">twitter</i>
+                            </a>
+                            <a href="#!" class="btn-floating waves-effect waves-light green" id="share-whatsapp">
+                                <i class="material-icons">whatsapp</i>
+                            </a>
+                            <a href="#!" class="btn-floating waves-effect waves-light blue darken-3" id="share-linkedin">
+                                <i class="material-icons">linkedin</i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="comments-section">
+                        <h5>Comments</h5>
+                        
+                        <!-- Comment Form -->
+                        <div class="card">
+                            <div class="card-content">
+                                <form id="comment-form">
+                                    <div class="input-field">
+                                        <textarea id="comment-text" class="materialize-textarea" required></textarea>
+                                        <label for="comment-text">Write a comment</label>
+                                    </div>
+                                    <button class="btn waves-effect waves-light green" type="submit">
+                                        Post Comment
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Comments List -->
+                        <div id="comments-list">
+                            <!-- Comments will be loaded here -->
+                        </div>
+
+                        <!-- Load More Comments -->
+                        <div class="center-align" id="load-more-comments" style="display: none;">
+                            <button class="btn waves-effect waves-light green">
+                                Load More Comments
+                                <i class="material-icons right">more_horiz</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col s12 m4">
+                    <!-- Author Info -->
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">About the Author</span>
+                            <div class="author-info">
+                                <img id="author-image" class="circle responsive-img" alt="Author">
+                                <h6 id="author-name"></h6>
+                                <p id="author-bio"></p>
+                                <div class="author-social">
+                                    <!-- Social links will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Related Articles -->
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Related Articles</span>
+                            <div id="related-articles">
+                                <!-- Related articles will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Popular Tags -->
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Popular Tags</span>
+                            <div class="tags-cloud" id="popular-tags">
+                                <!-- Tags will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="card green lighten-5">
+                        <div class="card-content">
+                            <span class="card-title">Subscribe to Our Newsletter</span>
+                            <p>Get the latest articles and herbal tips delivered to your inbox.</p>
+                            <form id="newsletter-form">
+                                <div class="input-field">
+                                    <input type="email" id="newsletter-email" required>
+                                    <label for="newsletter-email">Your Email</label>
+                                </div>
+                                <button class="btn waves-effect waves-light green" type="submit">
+                                    Subscribe
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Comment Template -->
+    <template id="comment-template">
+        <div class="comment">
+            <div class="comment-header">
+                <img src="" alt="User" class="circle responsive-img">
+                <div class="comment-info">
+                    <span class="comment-author"></span>
+                    <span class="comment-date grey-text"></span>
+                </div>
+            </div>
+            <div class="comment-content"></div>
+            <div class="comment-actions">
+                <a href="#!" class="reply-btn">Reply</a>
+                <a href="#!" class="like-btn">
+                    <i class="material-icons tiny">thumb_up</i>
+                    <span class="likes-count">0</span>
+                </a>
+            </div>
+            <div class="comment-replies">
+                <!-- Replies will be nested here -->
+            </div>
+        </div>
+    </template>
+
+    <!-- Related Article Template -->
+    <template id="related-article-template">
+        <div class="related-article">
+            <img src="" alt="Article" class="responsive-img">
+            <div class="article-info">
+                <a href="" class="article-title"></a>
+                <span class="article-date grey-text"></span>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/blog-article.js"></script>
+</body>
+</html> 

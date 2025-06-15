@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Notification - Admin Dashboard - Herbal Heaven</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="green darken-1">
+        <div class="nav-wrapper container">
+            <a href="/admin/dashboard.html" class="brand-logo">Admin Dashboard</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/admin/products.html">Manage Products</a></li>
+                <li><a href="/admin/orders.html">Orders</a></li>
+                <li><a href="/admin/users.html">Users</a></li>
+                <li class="active"><a href="/admin/send-notification.html">Send Notification</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="/admin/products.html">Manage Products</a></li>
+        <li><a href="/admin/orders.html">Orders</a></li>
+        <li><a href="/admin/users.html">Users</a></li>
+        <li class="active"><a href="/admin/send-notification.html">Send Notification</a></li>
+        <li><a href="#" id="mobile-logout">Logout</a></li>
+    </ul>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>Send Notification</h4>
+                <p>Create and send notifications to users</p>
+            </div>
+        </div>
+
+        <!-- Notification Form -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Create Notification</span>
+                        <form id="notification-form">
+                            <!-- Notification Type -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <select id="notification-type" required>
+                                        <option value="" disabled selected>Choose notification type</option>
+                                        <option value="system">System Notification</option>
+                                        <option value="product">Product Notification</option>
+                                        <option value="order">Order Notification</option>
+                                    </select>
+                                    <label>Notification Type</label>
+                                </div>
+                            </div>
+
+                            <!-- Notification Title -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="notification-title" type="text" class="validate" required>
+                                    <label for="notification-title">Notification Title</label>
+                                </div>
+                            </div>
+
+                            <!-- Notification Message -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea id="notification-message" class="materialize-textarea validate" required></textarea>
+                                    <label for="notification-message">Notification Message</label>
+                                </div>
+                            </div>
+
+                            <!-- Image URL (Optional) -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="notification-image" type="url">
+                                    <label for="notification-image">Image URL (Optional)</label>
+                                </div>
+                            </div>
+
+                            <!-- Link URL (Optional) -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="notification-link" type="url">
+                                    <label for="notification-link">Link URL (Optional)</label>
+                                </div>
+                            </div>
+
+                            <!-- Target Recipients -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <h6>Target Recipients</h6>
+                                </div>
+                            </div>
+
+                            <!-- Recipient Type Selection -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <p>
+                                        <label>
+                                            <input name="recipient-type" type="radio" value="all" checked />
+                                            <span>All Users</span>
+                                        </label>
+                                    </p>
+                                    <p>
+                                        <label>
+                                            <input name="recipient-type" type="radio" value="specific" />
+                                            <span>Specific Users</span>
+                                        </label>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- User Selection (Hidden by default) -->
+                            <div class="row user-selection" style="display: none;">
+                                <div class="input-field col s12">
+                                    <select id="user-select" multiple>
+                                        <!-- Users will be loaded here -->
+                                    </select>
+                                    <label>Select Users</label>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <button class="btn waves-effect waves-light green" type="submit">
+                                        Send Notification
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        // Initialize the application when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+
+        // Main initialization function
+        function initApp() {
+            // Initialize Materialize components
+            initializeMaterializeComponents();
+            
+            // Check authentication
+            checkAdminAuth();
+            
+            // Set up event listeners
+            setupEventListeners();
+        }
+
+        // Initialize Materialize UI components
+        function initializeMaterializeComponents() {
+            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+            M.FormSelect.init(document.querySelectorAll('select'));
+        }
+
+        // Check if user is authenticated as admin
+        function checkAdminAuth() {
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            
+            if (!token || user.role !== 'admin') {
+                window.location.href = '/login.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Set up all event listeners
+        function setupEventListeners() {
+            // Logout buttons
+            document.getElementById('logout').addEventListener('click', handleLogout);
+            document.getElementById('mobile-logout').addEventListener('click', handleLogout);
+            
+            // Recipient type radio buttons
+            setupRecipientTypeListeners();
+            
+            // Form submission
+            document.getElementById('notification-form').addEventListener('submit', handleFormSubmit);
+        }
+
+        // Set up recipient type radio button listeners
+        function setupRecipientTypeListeners() {
+            const recipientTypeRadios = document.querySelectorAll('input[name="recipient-type"]');
+            recipientTypeRadios.forEach(radio => {
+                radio.addEventListener('change', handleRecipientTypeChange);
+            });
+        }
+
+        // Handle recipient type change
+        function handleRecipientTypeChange() {
+            const userSelection = document.querySelector('.user-selection');
+            
+            // Hide user selection initially
+            userSelection.style.display = 'none';
+            
+            // Show user selection if specific users option is selected
+            if (this.value === 'specific') {
+                userSelection.style.display = 'block';
+                loadUsers();
+            }
+        }
+
+        // Load users for specific targeting
+        async function loadUsers() {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch('/api/users', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Failed to load users');
+                }
+                
+                const users = await response.json();
+                populateUserSelect(users);
+            } catch (error) {
+                console.error('Error loading users:', error);
+                showToast('Failed to load users', 'red');
+            }
+        }
+
+        // Populate user select dropdown
+        function populateUserSelect(users) {
+            const userSelect = document.getElementById('user-select');
+            userSelect.innerHTML = '';
+            
+            users.forEach(user => {
+                const option = document.createElement('option');
+                option.value = user._id;
+                option.textContent = `${user.name} (${user.email})`;
+                userSelect.appendChild(option);
+            });
+            
+            // Reinitialize select after populating options
+            M.FormSelect.init(userSelect);
+        }
+
+        // Handle form submission
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // Get notification data from form
+            const notificationData = getNotificationData();
+            
+            if (!notificationData) {
+                return; // Validation failed
+            }
+            
+            try {
+                await sendNotification(notificationData);
+                resetForm();
+                showToast('Notification sent successfully', 'green');
+            } catch (error) {
+                console.error('Error sending notification:', error);
+                showToast(error.message || 'Failed to send notification', 'red');
+            }
+        }
+
+        // Get notification data from form
+        function getNotificationData() {
+            // Get basic notification data
+            const type = document.getElementById('notification-type').value;
+            const title = document.getElementById('notification-title').value;
+            const message = document.getElementById('notification-message').value;
+            const image = document.getElementById('notification-image').value;
+            const link = document.getElementById('notification-link').value;
+            
+            // Get recipient type
+            const recipientType = document.querySelector('input[name="recipient-type"]:checked').value;
+            
+            // Prepare notification data
+            const notificationData = {
+                type,
+                title,
+                message,
+                image: image || undefined,
+                link: link || undefined
+            };
+            
+            // Add recipient data based on selection
+            if (recipientType === 'all') {
+                notificationData.target = 'all';
+            } else if (recipientType === 'specific') {
+                notificationData.target = 'specific';
+                
+                // Get selected users
+                const userSelect = document.getElementById('user-select');
+                const selectedUsers = M.FormSelect.getInstance(userSelect).getSelectedValues();
+                
+                if (selectedUsers.length === 0) {
+                    showToast('Please select at least one user', 'red');
+                    return null;
+                }
+                
+                notificationData.users = selectedUsers;
+            }
+            
+            return notificationData;
+        }
+
+        // Send notification to API
+        async function sendNotification(notificationData) {
+            const token = localStorage.getItem('token');
+            const response = await fetch('/api/notifications/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(notificationData)
+            });
+            
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to send notification');
+            }
+            
+            return response.json();
+        }
+
+        // Reset form after successful submission
+        function resetForm() {
+            document.getElementById('notification-form').reset();
+            M.updateTextFields();
+            M.FormSelect.init(document.querySelectorAll('select'));
+        }
+
+        // Handle logout
+        function handleLogout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            window.location.href = '/login.html';
+        }
+
+        // Show toast message
+        function showToast(message, classes = 'green') {
+            M.toast({
+                html: message,
+                classes: classes,
+                displayLength: 3000
+            });
+        }
+    </script>
+</body>
+</html> 

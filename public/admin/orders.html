@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Orders - Herbal Heaven Admin</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="green darken-1">
+        <div class="nav-wrapper container">
+            <a href="/admin/dashboard.html" class="brand-logo">Admin Dashboard</a>
+            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="/admin/products.html">Manage Products</a></li>
+                <li class="active"><a href="/admin/orders.html">Orders</a></li>
+                <li><a href="/admin/users.html">Users</a></li>
+                <li><a href="/admin/send-notification.html">Send Notification</a></li>
+                <li><a href="#" id="logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <ul class="sidenav" id="mobile-nav">
+        <li><a href="/admin/products.html">Manage Products</a></li>
+        <li class="active"><a href="/admin/orders.html">Orders</a></li>
+        <li><a href="/admin/users.html">Users</a></li>
+        <li><a href="/admin/send-notification.html">Send Notification</a></li>
+        <li><a href="#" id="mobile-logout">Logout</a></li>
+    </ul>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h4>Manage Orders</h4>
+                <div class="card">
+                    <div class="card-content">
+                        <!-- Filters -->
+                        <div class="row">
+                            <div class="input-field col s12 m4">
+                                <select id="status-filter">
+                                    <option value="">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="shipped">Shipped</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="cancelled">Cancelled</option>
+                                </select>
+                                <label>Filter by Status</label>
+                            </div>
+                            <div class="input-field col s12 m4">
+                                <input type="text" id="search-orders">
+                                <label for="search-orders">Search Orders</label>
+                            </div>
+                            <div class="input-field col s12 m4">
+                                <input type="date" id="date-filter">
+                                <label for="date-filter">Filter by Date</label>
+                            </div>
+                        </div>
+
+                        <!-- Orders Table -->
+                        <table class="striped responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-table">
+                                <!-- Orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Details Modal -->
+    <div id="order-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Order Details</h4>
+            <div id="order-details">
+                <!-- Order details will be loaded here -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="modal-close waves-effect waves-light btn-flat">Close</button>
+            <button class="waves-effect waves-light btn green" id="update-status-btn">Update Status</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/admin.js"></script>
+    <script src="/js/admin-orders.js"></script>
+</body>
+
+</html>

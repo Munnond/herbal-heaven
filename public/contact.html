@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2 class="center-align green-text">Contact Us</h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Contact Information -->
+                <div class="col s12 m5">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Get in Touch</span>
+                            <div class="contact-info">
+                                <p><i class="material-icons left">location_on</i> Jawahar Bhawan, I.I.T Roorkee , Roorkee</p>
+                                <p><i class="material-icons left">phone</i> +91 7041882433</p>
+                                <p><i class="material-icons left">email</i> nd28122005@gmail.com</p>
+                                <p><i class="material-icons left">access_time</i> Mon-Fri: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Follow Us</span>
+                            <div class="social-links center-align">
+                                <a href="#!" class="btn-floating btn-large green">
+                                    <i class="material-icons">facebook</i>
+                                </a>
+                                <a href="#!" class="btn-floating btn-large green">
+                                    <i class="material-icons">twitter</i>
+                                </a>
+                                <a href="#!" class="btn-floating btn-large green">
+                                    <i class="material-icons">instagram</i>
+                                </a>
+                                <a href="#!" class="btn-floating btn-large green">
+                                    <i class="material-icons">linkedin</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="col s12 m7">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Send us a Message</span>
+                            <form id="contact-form">
+                                <div class="input-field">
+                                    <i class="material-icons prefix">person</i>
+                                    <input type="text" id="name" name="name" required>
+                                    <label for="name">Your Name</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">email</i>
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">Your Email</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">phone</i>
+                                    <input type="tel" id="phone" name="phone">
+                                    <label for="phone">Your Phone (optional)</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">subject</i>
+                                    <select id="subject" name="subject" required>
+                                        <option value="" disabled selected>Choose a subject</option>
+                                        <option value="general">General Inquiry</option>
+                                        <option value="product">Product Question</option>
+                                        <option value="order">Order Status</option>
+                                        <option value="support">Customer Support</option>
+                                    </select>
+                                    <label>Subject</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">message</i>
+                                    <textarea id="message" name="message" class="materialize-textarea" required></textarea>
+                                    <label for="message">Your Message</label>
+                                </div>
+                                <div class="center-align">
+                                    <button class="btn waves-effect waves-light green" type="submit">
+                                        Send Message
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Find Us</span>
+                            <div class="map-container">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.021479584402!2d77.897949074721!3d29.863654375015095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390eb364c5c1daad%3A0x3c41bb05d69f2007!2sJawahar%20Bhawan%20Canteen!5e0!3m2!1sen!2sin!4v1749138863965!5m2!1sen!2sin" 
+                                    width="1000" 
+                                    height="450" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/contact.js"></script>
+</body>
+</html> 

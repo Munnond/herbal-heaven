@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+      /* Allow dropdowns to overflow cards and sit above images */
+      .card, .card-content {
+        overflow: visible;
+      }
+      /* Make the Materialize select dropdown render on top */
+      ul.dropdown-content.select-dropdown {
+        position: absolute !important;
+        z-index: 2000 !important;
+      }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <!-- Search and Filter Section -->
+            <div class="row" id="filter-section">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row mb-0">
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">search</i>
+                                    <input type="text" id="search" class="validate">
+                                    <label for="search">Search Products</label>
+                                </div>
+                                <div class="input-field col s12 m3">
+                                    <select id="category-filter">
+                                        <option value="">All Categories</option>
+                                        <option value="herbs">Herbs</option>
+                                        <option value="supplements">Supplements</option>
+                                        <option value="teas">Teas</option>
+                                        <option value="essential-oils">Essential Oils</option>
+                                    </select>
+                                    <label>Category</label>
+                                </div>
+                                <div class="input-field col s12 m3">
+                                    <select id="sort-filter">
+                                        <option value="price_asc">Price: Low to High</option>
+                                        <option value="price_desc">Price: High to Low</option>
+                                        <option value="name_asc">Name: A to Z</option>
+                                        <option value="name_desc">Name: Z to A</option>
+                                    </select>
+                                    <label>Sort By</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row" id="products-grid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Initialize selects
+        const elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
+      });
+    </script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/socket-notifications.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+</html>

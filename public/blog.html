@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <!-- Blog Header -->
+            <div class="row">
+                <div class="col s12">
+                    <h4>Herbal Heaven Blog</h4>
+                    <p class="flow-text">Discover the power of natural healing and wellness</p>
+                </div>
+            </div>
+
+            <!-- Search and Filter -->
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="row mb-0">
+                                <div class="input-field col s12 m6">
+                                    <i class="material-icons prefix">search</i>
+                                    <input type="text" id="search" class="validate">
+                                    <label for="search">Search Articles</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <select id="category-filter">
+                                        <option value="">All Categories</option>
+                                        <option value="herbs">Herbs & Botanicals</option>
+                                        <option value="wellness">Wellness</option>
+                                        <option value="recipes">Herbal Recipes</option>
+                                        <option value="lifestyle">Natural Lifestyle</option>
+                                        <option value="research">Research & Studies</option>
+                                    </select>
+                                    <label>Category</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Featured Article -->
+                <div class="col s12" id="featured-article">
+                    <!-- Featured article will be loaded here -->
+                </div>
+
+                <!-- Article Grid -->
+                <div class="col s12">
+                    <div class="row" id="article-grid">
+                        <!-- Articles will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="col s12 center-align">
+                    <ul class="pagination" id="pagination">
+                        <!-- Pagination will be generated here -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="row">
+                <div class="col s12">
+                    <div class="card green lighten-5">
+                        <div class="card-content">
+                            <div class="row mb-0">
+                                <div class="col s12 m8">
+                                    <h5>Subscribe to Our Newsletter</h5>
+                                    <p>Get the latest articles, herbal tips, and wellness advice delivered to your inbox.</p>
+                                </div>
+                                <div class="col s12 m4">
+                                    <form id="newsletter-form">
+                                        <div class="input-field">
+                                            <input type="email" id="newsletter-email" required>
+                                            <label for="newsletter-email">Your Email</label>
+                                        </div>
+                                        <button class="btn waves-effect waves-light green" type="submit">
+                                            Subscribe
+                                            <i class="material-icons right">send</i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categories Section -->
+            <div class="row">
+                <div class="col s12">
+                    <h5>Popular Categories</h5>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Herbs & Botanicals</span>
+                            <p>Learn about different herbs and their healing properties.</p>
+                            <a href="/blog/category/herbs" class="green-text">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Wellness Tips</span>
+                            <p>Discover natural ways to improve your health and wellbeing.</p>
+                            <a href="/blog/category/wellness" class="green-text">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Herbal Recipes</span>
+                            <p>Try our collection of herbal teas, tinctures, and remedies.</p>
+                            <a href="/blog/category/recipes" class="green-text">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Article Template -->
+    <template id="article-template">
+        <div class="col s12 m6 l4">
+            <div class="card">
+                <div class="card-image">
+                    <img src="" alt="Article Image">
+                    <span class="card-title"></span>
+                </div>
+                <div class="card-content">
+                    <span class="article-category green-text"></span>
+                    <p class="article-excerpt"></p>
+                </div>
+                <div class="card-action">
+                    <a href="" class="green-text">Read More</a>
+                    <span class="right grey-text">
+                        <i class="material-icons tiny">access_time</i>
+                        <span class="article-date"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Featured Article Template -->
+    <template id="featured-article-template">
+        <div class="card">
+            <div class="card-image">
+                <img src="" alt="Featured Article">
+                <span class="card-title"></span>
+            </div>
+            <div class="card-content">
+                <span class="article-category green-text"></span>
+                <p class="article-excerpt"></p>
+                <div class="article-meta">
+                    <span class="author">
+                        <i class="material-icons tiny">person</i>
+                        <span class="author-name"></span>
+                    </span>
+                    <span class="date">
+                        <i class="material-icons tiny">access_time</i>
+                        <span class="article-date"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="card-action">
+                <a href="" class="btn waves-effect waves-light green">Read Full Article</a>
+            </div>
+        </div>
+    </template>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/blog.js"></script>
+</body>
+</html> 

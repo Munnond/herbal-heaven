@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <!-- Product Images -->
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-image">
+                            <img id="main-product-image" src="/images/placeholder.jpg" alt="Product Image">
+                        </div>
+                        <div class="card-content">
+                            <div class="image-thumbnails" id="image-thumbnails">
+                                <!-- Thumbnails will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content">
+                            <h4 id="product-name">Product Name</h4>
+                            <div class="price-tag">
+                                <span class="price" id="product-price">₹0.00</span>
+                                <span class="stock" id="stock-status">In Stock</span>
+                            </div>
+                            <p id="product-description">Loading product description...</p>
+                            
+                            <!-- Benefits -->
+                            <div class="section">
+                                <h5>Benefits</h5>
+                                <ul class="benefits-list" id="benefits-list">
+                                    <!-- Benefits will be loaded here -->
+                                </ul>
+                            </div>
+
+                            <!-- Quantity Selector -->
+                            <div class="section">
+                                <div class="quantity-selector">
+                                    <button class="btn-floating waves-effect waves-light green" id="decrease-quantity">
+                                        <i class="material-icons">remove</i>
+                                    </button>
+                                    <input type="number" id="quantity" value="1" min="1" class="center-align">
+                                    <button class="btn-floating waves-effect waves-light green" id="increase-quantity">
+                                        <i class="material-icons">add</i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Add to Cart Button -->
+                            <div class="section">
+                                <button class="btn waves-effect waves-light green" id="add-to-cart">
+                                    <i class="material-icons left">add_shopping_cart</i>
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Details Tabs -->
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s4"><a class="active" href="#details">Details</a></li>
+                        <li class="tab col s4"><a href="#usage">Usage Instructions</a></li>
+                        <li class="tab col s4"><a href="#reviews">Reviews</a></li>
+                    </ul>
+                </div>
+                <div id="details" class="col s12">
+                    <div class="card-panel">
+                        <div id="details-content">
+                            <!-- Details content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                <div id="usage" class="col s12">
+                    <div class="card-panel">
+                        <div id="usage-content">
+                            <!-- Usage instructions will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                <div id="reviews" class="col s12">
+                    <div class="card-panel">
+                        <div id="reviews-content">
+                            <!-- Reviews will be loaded here -->
+                        </div>
+                        <!-- Add Review Form -->
+                        <div class="review-form" id="review-form">
+                            <h5>Write a Review</h5>
+                            <div class="input-field">
+                                <i class="material-icons prefix">star</i>
+                                <select id="rating">
+                                    <option value="5">5 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="1">1 Star</option>
+                                </select>
+                                <label>Rating</label>
+                            </div>
+                            <div class="input-field">
+                                <i class="material-icons prefix">message</i>
+                                <textarea id="review-text" class="materialize-textarea"></textarea>
+                                <label for="review-text">Your Review</label>
+                            </div>
+                            <button class="btn waves-effect waves-light green" id="submit-review">
+                                Submit Review
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/socket-notifications.js"></script>
+    <script src="/js/product-detail.js"></script>
+</body>
+</html> 

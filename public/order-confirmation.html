@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Herbal Heaven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation will be dynamically loaded -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="center-align">
+                                <i class="material-icons large green-text">check_circle</i>
+                                <h4>Order Placed Successfully!</h4>
+                                <p id="order-id">Order ID: Loading...</p>
+                                <p>Thank you for your order. We will process it shortly.</p>
+                            </div>
+                            
+                            <div class="divider"></div>
+                            
+                            <div id="order-details">
+                                <h5>Order Details</h5>
+                                <div class="progress" id="loading-indicator">
+                                    <div class="indeterminate"></div>
+                                </div>
+                                <div id="order-items"></div>
+                            </div>
+                            
+                            <div class="center-align" style="margin-top: 30px;">
+                                <a href="/products" class="btn waves-effect waves-light green">
+                                    Continue Shopping
+                                    <i class="material-icons right">shopping_cart</i>
+                                </a>
+                                <a href="/account/orders" class="btn waves-effect waves-light">
+                                    View All Orders
+                                    <i class="material-icons right">receipt</i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer will be dynamically loaded -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/socket-notifications.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check authentication
+            const token = localStorage.getItem('token');
+            if (!token) {
+                window.location.href = '/login';
+                return;
+            }
+
+            // Get order ID from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('id');
+            
+            if (!orderId) {
+                document.getElementById('order-id').textContent = 'Order ID not found';
+                document.getElementById('loading-indicator').style.display = 'none';
+                return;
+            }
+
+            // Load order details
+            loadOrderDetails(orderId);
+        });
+
+        async function loadOrderDetails(orderId) {
+            try {
+                const token = localStorage.getItem('token');
+                const response = await fetch(`/api/orders/${orderId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to load order details');
+                }
+
+                const order = await response.json();
+                
+                // Update order ID
+                document.getElementById('order-id').textContent = `Order ID: ${order._id}`;
+                
+                // Display order items
+                const orderItemsContainer = document.getElementById('order-items');
+                orderItemsContainer.innerHTML = `
+                    <div class="row">
+                        <div class="col s12">
+                            <p><strong>Order Date:</strong> ${new Date(order.createdAt).toLocaleDateString()}</p>
+                            <p><strong>Status:</strong> ${order.status}</p>
+                            <p><strong>Payment Status:</strong> ${order.paymentStatus}</p>
+                            <p><strong>Total Amount:</strong> ₹${order.totalAmount.toFixed(2)}</p>
+                        </div>
+                    </div>
+                    <h6>Items:</h6>
+                    <ul class="collection">
+                        ${order.items.map(item => `
+                            <li class="collection-item avatar">
+                                <img src="${item.product.images && item.product.images.length ? item.product.images[0] : '/images/placeholder.jpg'}" alt="${item.product.name}" class="circle">
+                                <span class="title">${item.product.name}</span>
+                                <p>
+                                    Quantity: ${item.quantity}<br>
+                                    Price: ₹${item.priceAtPurchase.toFixed(2)}
+                                </p>
+                                <span class="secondary-content">₹${(item.quantity * item.priceAtPurchase).toFixed(2)}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                `;
+                
+                // Hide loading indicator
+                document.getElementById('loading-indicator').style.display = 'none';
+            } catch (error) {
+                console.error('Error loading order details:', error);
+                document.getElementById('order-items').innerHTML = `
+                    <div class="red-text">
+                        <p>Error loading order details. Please try again later.</p>
+                    </div>
+                `;
+                document.getElementById('loading-indicator').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html> 
